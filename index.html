@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" media="all" href="common.css">
+		<link rel="stylesheet" media="only screen and (max-width: 637px)" href="small.css">
+		<link rel="stylesheet" media="only screen and (min-width: 638px)" href="large.css">
+		<link rel="stylesheet" href="photoswipe.css">
+		<link rel="stylesheet" href="default-skin.css">
+		<script src="photoswipe.min.js"></script>
+		<script src="photoswipe-ui-default.min.js"></script>
+		<title>file encrypter</title>
+	</head>
+	<body>
+
+<input type="file" id="files" name="files[]" multiple />
+<div id="downloadContainer"></div>
+
+<script>
+// Check for the various File API support.
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+  // Great success! All the File APIs are supported.
+} else {
+  alert('The File APIs are not fully supported in this browser.');
+}
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+	var reader = new FileReader()
+reader.onload = (function(f) {
+		return function(file) {
+	setSaveFile(file.target.result,f.name)
+}
+})(f)
+	reader.readAsBinaryString(f)
+
+    }
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+function setSaveFile(contents, file_name, mime_type) {
+  var downloadContainer = document.getElementById('downloadContainer');
+  var a = document.createElement('a');
+  mime_type = mime_type || 'application/octet-stream'; // text/html, image/png, et c
+  if (file_name) a.setAttribute('download', file_name);
+  a.href = 'data:'+ mime_type +';base64,'+ btoa(contents || '');
+  a.innerHTML = file_name
+  downloadContainer.appendChild(a)
+}
+</script>
+
+	</body>
+</html>
