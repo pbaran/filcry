@@ -4,19 +4,12 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" media="all" href="common.css">
-		<link rel="stylesheet" media="only screen and (max-width: 637px)" href="small.css">
-		<link rel="stylesheet" media="only screen and (min-width: 638px)" href="large.css">
-		<link rel="stylesheet" href="photoswipe.css">
-		<link rel="stylesheet" href="default-skin.css">
-		<script src="photoswipe.min.js"></script>
-		<script src="photoswipe-ui-default.min.js"></script>
 		<title>file encrypter</title>
 	</head>
 	<body>
 
 <input type="file" id="files" name="files[]" multiple />
-<div id="downloadContainer"></div>
+<ul id="fileList"></ul>
 
 <script>
 // Check for the various File API support.
@@ -45,13 +38,15 @@ reader.onload = (function(f) {
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
 function setSaveFile(contents, file_name, mime_type) {
-  var downloadContainer = document.getElementById('downloadContainer');
+  var fileList = document.getElementById('fileList');
+  var li = document.createElement('li');
   var a = document.createElement('a');
+  li.appendChild(a)
   mime_type = mime_type || 'application/octet-stream'; // text/html, image/png, et c
   if (file_name) a.setAttribute('download', file_name);
   a.href = 'data:'+ mime_type +';base64,'+ btoa(contents || '');
   a.innerHTML = file_name
-  downloadContainer.appendChild(a)
+  fileList.appendChild(li)
 }
 </script>
 
