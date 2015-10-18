@@ -8,47 +8,50 @@
 	</head>
 	<body>
 
-<input type="file" id="files" name="files[]" multiple />
-<ul id="fileList"></ul>
+		<input type="file" id="files" name="files[]" multiple />
+		<ul id="fileList"></ul>
 
-<script>
+		<script>
 // Check for the various File API support.
 if (window.File && window.FileReader && window.FileList && window.Blob) {
-  // Great success! All the File APIs are supported.
+  	// Great success! All the File APIs are supported.
 } else {
-  alert('The File APIs are not fully supported in this browser.');
+  	alert('The File APIs are not fully supported in this browser.');
 }
-  function handleFileSelect(evt) {
+function handleFileSelect(evt) {
+  	var fileList = document.getElementById('fileList');
+	while (fileList.firstChild) fileList.removeChild(fileList.firstChild)
+
     var files = evt.target.files; // FileList object
 
     // files is a FileList of File objects. List some properties.
     var output = [];
     for (var i = 0, f; f = files[i]; i++) {
-	var reader = new FileReader()
-reader.onload = (function(f) {
-		return function(file) {
-	setSaveFile(file.target.result,f.name)
-}
-})(f)
-	reader.readAsBinaryString(f)
+		var reader = new FileReader()
+			reader.onload = (function(f) {
+				return function(file) {
+					setSaveFile(file.target.result,f.name)
+				}
+			})(f)
+		reader.readAsBinaryString(f)
 
     }
-  }
+}
 
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
 function setSaveFile(contents, file_name, mime_type) {
-  var fileList = document.getElementById('fileList');
-  var li = document.createElement('li');
-  var a = document.createElement('a');
-  li.appendChild(a)
-  mime_type = mime_type || 'application/octet-stream'; // text/html, image/png, et c
-  if (file_name) a.setAttribute('download', file_name);
-  a.href = 'data:'+ mime_type +';base64,'+ btoa(contents || '');
-  a.innerHTML = file_name
-  fileList.appendChild(li)
+  	var fileList = document.getElementById('fileList');
+  	var li = document.createElement('li');
+  	var a = document.createElement('a');
+  	li.appendChild(a)
+  		mime_type = mime_type || 'application/octet-stream'; // text/html, image/png, et c
+  	if (file_name) a.setAttribute('download', file_name);
+  	a.href = 'data:'+ mime_type +';base64,'+ btoa(contents || '');
+  	a.innerHTML = file_name
+  		fileList.appendChild(li)
 }
-</script>
-
+		</script>
 	</body>
 </html>
+
