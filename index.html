@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>file encrypter</title>
+		<script src="forge.min.js"></script>
 	</head>
 	<body>
 
@@ -12,6 +13,9 @@
 		<ul id="fileList"></ul>
 
 		<script>
+if (forge) alert(forge.pki.rsa)
+
+>>>>>>> add rsa library
 // Check for the various File API support.
 if (window.File && window.FileReader && window.FileList && window.Blob) {
   	// Great success! All the File APIs are supported.
@@ -54,4 +58,38 @@ function setSaveFile(contents, file_name, mime_type) {
 		</script>
 	</body>
 </html>
+<<<<<<< HEAD
 
+=======
+-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-128-CBC,3C865750A2D56635872BFD51F532CA8E
+
+XNYfy3GCjsW+7tBHTttguXibY/WWmhRYlX/dFjE1sMTaZ2adyUCBZTURMcxmyUJz
+CiSAYF7ek7LO3psYfkJDzu0oKCJMinZ6kPB7ehP0rWP6YEvpiU79w9V5ZI1J9GYE
+wV/NQV5LwC7TjNjDJDCVjsoB4k2ev4CaaX1xGRv/OgHezd8fWdGPSucsTAaLNOYS
+lETf8UejWs7CiWOj1+aY6Hqmi2o1AxpkKJaHdp0uSogwLlR24XjGi9UaxQHZwmu0
+gaJFw/u6S2ukEKbSxUdYmul6Cq8XYZbZunvWUcEUZQhgu5m9sM1ZRn0fJGXmwT2J
+oh4J2V52km3zHmYarW5UeTjA9SR3NsketoW+Qyz47/llbE/no5ANMG+PObcjZOpy
+I5PnCFdP7IG7aMj6pniXKAxYNR5vbukcRPId9ub5VkkN2WBU+2K4Pb6F+NE5XIYm
+6pI2iCPdzOHZVZ0pA8lf79yhR7AE1/wENUzH8QqbkPNzCIn1PD8IwL2B1CQE3bB+
+WIDnPUHH9ZWcl9YfxWiIHdMsXcY/1b3n5fkrJYIxwIDU/IR4tOCDCv7QOdw6WlaT
+twPfuYERsUySZ9v7c80Vpa7o80t/kmYERd5ngt0Tb+CkNq848yToQ03yqFHI6Rqx
+ayFEEOx9lUj/Pni7xnuVvMHLBjUImzQGaCV3tU8FpmVyshEIQ64vhu/X2Xok7S5s
+2nJvLwpL3dEltuOkYVYYSkEVy88niLF7qNbxblZ8WkTuooBB/e8vrNsqpe2nt6P/
+FF3HJXe50nGBkYjg6AEao5mbwt8sa9NP55rmnwu0AXV0isC5XyLpv4fnRQGB4Tv6
+Rv7uNfyu1ioxQQx+rw+LyO8BdW1zKafVwsppuHAsVIXJF4oceVLs1fBWSEKe+upk
+DlSCaESHkXXuLXKsg2yx0e3l34auSxhPO7uvsaUPobZrao2EZH90aWXwQfk1e5OH
+U+mf7+oNPqsDcFIXIGtRwObYhZiEbKYHpTltuRkBc86JZbhxcOnYdcGAiz8ZMphZ
+3ZKzWcLIOtLeCNb9j7WUdOZFiMdWjCDI00dxaoVT7TUmBpzi99eKkjB5C4W3ij9e
+JkmEi8Wf1EPZypp/kDWHTw9VBNSv2HyjUH57PajYlvb/rQZ6/pmCEbA4uYTUjaLT
+djm4SfDDQz16FbIZwWOtJJnXBDdk+8iRWBeIqqC3e+cRY7AIFjBU6K1cVvVuvzuL
+bilUcxUnpXyGX/DVaOePXrBIPZOjsjXm1XCv4qpvF4wsNh8EV5U2e9JjSh4UzhoT
+q9/S1fE8DCWwAHWCkxr/HzZJZODsUbNX6KXDw/d9cmyFHs40XwioPteCbIp0FOiC
+MQgup1JFLsTXxhCR/ZZJ6i66ZTpRNLpwOWEZilfkgYDhfAv17icOwWiCChy/UqY0
+Ajz3lUrFnvDNsT1sczLhnrWjaVrmrNV8XseymFUSvoiCFCcgsgJ1XCkeaGjRxO90
+lARwuhNNEcN048OHO+5fj+40ezdibyHIzo3ykscmPs15WwPbiiWncoE6liEecrGr
+5fqwwYGSgR9pbVjIxZRzr2p2atg2FWer+yVObFdiDQtkLW9nz7bFDzsbPTOZGyHm
+-----END RSA PRIVATE KEY-----
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCUGpCY47baEDHLaoXMti4lHozHwRLtOK+jZAlgZlue/Wykfw40Lj6rGZgChQ/QwMPd1Nmnr2qWCjkeROwHSX4p2RtLOQjFreMMW32KOjOrpKKSQKld+eD+HeftFO5FrHGuXrR81apFa0yNZTSZhr2LI2jAiyloGiykW9Tvew7XvVGMLdBmtWVRkWYNnQkA/9iaT5HwpQ259GEMR7W3UDmlirDHRTYcNAWaCzk0nlHFOQP4JojlV53nu+/+zRuc3sl4yVJ489TrFYTK5GzzhL54irth4IkX1ajALUBsRDPg2Chji0hbaSCxuLkgb9evSLto0QjOHYreR5OFLFfOfZVb pawbar@localhost
+>>>>>>> add rsa library
