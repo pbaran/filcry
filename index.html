@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>file encrypter</title>
-		<script src="jsencrypt.js"></script>
+		<script src="forge.min.js"></script>
 	</head>
 	<body>
 
@@ -13,7 +13,7 @@
 		<ul id="fileList"></ul>
 
 		<script>
-if (JSEncrypt) alert(JSEncrypt)
+if (forge) alert(forge.pki.rsa)
 
 // Check for the various File API support.
 if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -89,3 +89,4 @@ lARwuhNNEcN048OHO+5fj+40ezdibyHIzo3ykscmPs15WwPbiiWncoE6liEecrGr
 5fqwwYGSgR9pbVjIxZRzr2p2atg2FWer+yVObFdiDQtkLW9nz7bFDzsbPTOZGyHm
 -----END RSA PRIVATE KEY-----
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCUGpCY47baEDHLaoXMti4lHozHwRLtOK+jZAlgZlue/Wykfw40Lj6rGZgChQ/QwMPd1Nmnr2qWCjkeROwHSX4p2RtLOQjFreMMW32KOjOrpKKSQKld+eD+HeftFO5FrHGuXrR81apFa0yNZTSZhr2LI2jAiyloGiykW9Tvew7XvVGMLdBmtWVRkWYNnQkA/9iaT5HwpQ259GEMR7W3UDmlirDHRTYcNAWaCzk0nlHFOQP4JojlV53nu+/+zRuc3sl4yVJ489TrFYTK5GzzhL54irth4IkX1ajALUBsRDPg2Chji0hbaSCxuLkgb9evSLto0QjOHYreR5OFLFfOfZVb pawbar@localhost
+>>>>>>> add rsa library
