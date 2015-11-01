@@ -12,31 +12,8 @@
 		<input type="file" id="files" name="files[]" multiple />
 		<ul id="fileList"></ul>
 
-
-<input id="private-key" type="hidden"
- value="-----BEGIN RSA PRIVATE KEY-----
-MIICXQIBAAKBgQDlOJu6TyygqxfWT7eLtGDwajtNFOb9I5XRb6khyfD1Yt3YiCgQ
-WMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76xFxdU6jE0NQ+Z+zEdhUTooNR
-aY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4gwQco1KRMDSmXSMkDwIDAQAB
-AoGAfY9LpnuWK5Bs50UVep5c93SJdUi82u7yMx4iHFMc/Z2hfenfYEzu+57fI4fv
-xTQ//5DbzRR/XKb8ulNv6+CHyPF31xk7YOBfkGI8qjLoq06V+FyBfDSwL8KbLyeH
-m7KUZnLNQbk8yGLzB3iYKkRHlmUanQGaNMIJziWOkN+N9dECQQD0ONYRNZeuM8zd
-8XJTSdcIX4a3gy3GGCJxOzv16XHxD03GW6UNLmfPwenKu+cdrQeaqEixrCejXdAF
-z/7+BSMpAkEA8EaSOeP5Xr3ZrbiKzi6TGMwHMvC7HdJxaBJbVRfApFrE0/mPwmP5
-rN7QwjrMY+0+AbXcm8mRQyQ1+IGEembsdwJBAN6az8Rv7QnD/YBvi52POIlRSSIM
-V7SwWvSK4WSMnGb1ZBbhgdg57DXaspcwHsFV7hByQ5BvMtIduHcT14ECfcECQATe
-aTgjFnqE/lQ22Rk0eGaYO80cc643BXVGafNfd9fcvwBMnk0iGX0XRsOozVt5Azil
-psLBYuApa66NcVHJpCECQQDTjI2AQhFc1yRnCU/YgDnSpJVm1nASoRUnU8Jfm3Oz
-uku7JUXcVpt08DFSceCEX9unCuMcT72rAQlLpdZir876
------END RSA PRIVATE KEY-----" />
-<input id="public-key" type="hidden"
- value="-----BEGIN PUBLIC KEY-----
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCUGpCY47baEDHLaoXMti4lHozHwRLtOK+jZAlgZlue/Wykfw40Lj6rGZgChQ/QwMPd1Nmnr2qWCjkeROwHSX4p2RtLOQjFreMMW32KOjOrpKKSQKld+eD+HeftFO5FrHGuXrR81apFa0yNZTSZhr2LI2jAiyloGiykW9Tvew7XvVGMLdBmtWVRkWYNnQkA/9iaT5HwpQ259GEMR7W3UDmlirDHRTYcNAWaCzk0nlHFOQP4JojlV53nu+/+zRuc3sl4yVJ489TrFYTK5GzzhL54irth4IkX1ajALUBsRDPg2Chji0hbaSCxuLkgb9evSLto0QjOHYreR5OFLFfOfZVb" />
 		<script>
-var privateKey = document.getElementById('private-key').value
-var encrypt = new JSEncrypt()
-encrypt.setPrivateKey(privateKey)
-alert(encrypt.encrypt("abc"))
+if (JSEncrypt) alert(JSEncrypt)
 
 // Check for the various File API support.
 if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -80,3 +57,35 @@ function setSaveFile(contents, file_name, mime_type) {
 		</script>
 	</body>
 </html>
+
+-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-128-CBC,3C865750A2D56635872BFD51F532CA8E
+
+XNYfy3GCjsW+7tBHTttguXibY/WWmhRYlX/dFjE1sMTaZ2adyUCBZTURMcxmyUJz
+CiSAYF7ek7LO3psYfkJDzu0oKCJMinZ6kPB7ehP0rWP6YEvpiU79w9V5ZI1J9GYE
+wV/NQV5LwC7TjNjDJDCVjsoB4k2ev4CaaX1xGRv/OgHezd8fWdGPSucsTAaLNOYS
+lETf8UejWs7CiWOj1+aY6Hqmi2o1AxpkKJaHdp0uSogwLlR24XjGi9UaxQHZwmu0
+gaJFw/u6S2ukEKbSxUdYmul6Cq8XYZbZunvWUcEUZQhgu5m9sM1ZRn0fJGXmwT2J
+oh4J2V52km3zHmYarW5UeTjA9SR3NsketoW+Qyz47/llbE/no5ANMG+PObcjZOpy
+I5PnCFdP7IG7aMj6pniXKAxYNR5vbukcRPId9ub5VkkN2WBU+2K4Pb6F+NE5XIYm
+6pI2iCPdzOHZVZ0pA8lf79yhR7AE1/wENUzH8QqbkPNzCIn1PD8IwL2B1CQE3bB+
+WIDnPUHH9ZWcl9YfxWiIHdMsXcY/1b3n5fkrJYIxwIDU/IR4tOCDCv7QOdw6WlaT
+twPfuYERsUySZ9v7c80Vpa7o80t/kmYERd5ngt0Tb+CkNq848yToQ03yqFHI6Rqx
+ayFEEOx9lUj/Pni7xnuVvMHLBjUImzQGaCV3tU8FpmVyshEIQ64vhu/X2Xok7S5s
+2nJvLwpL3dEltuOkYVYYSkEVy88niLF7qNbxblZ8WkTuooBB/e8vrNsqpe2nt6P/
+FF3HJXe50nGBkYjg6AEao5mbwt8sa9NP55rmnwu0AXV0isC5XyLpv4fnRQGB4Tv6
+Rv7uNfyu1ioxQQx+rw+LyO8BdW1zKafVwsppuHAsVIXJF4oceVLs1fBWSEKe+upk
+DlSCaESHkXXuLXKsg2yx0e3l34auSxhPO7uvsaUPobZrao2EZH90aWXwQfk1e5OH
+U+mf7+oNPqsDcFIXIGtRwObYhZiEbKYHpTltuRkBc86JZbhxcOnYdcGAiz8ZMphZ
+3ZKzWcLIOtLeCNb9j7WUdOZFiMdWjCDI00dxaoVT7TUmBpzi99eKkjB5C4W3ij9e
+JkmEi8Wf1EPZypp/kDWHTw9VBNSv2HyjUH57PajYlvb/rQZ6/pmCEbA4uYTUjaLT
+djm4SfDDQz16FbIZwWOtJJnXBDdk+8iRWBeIqqC3e+cRY7AIFjBU6K1cVvVuvzuL
+bilUcxUnpXyGX/DVaOePXrBIPZOjsjXm1XCv4qpvF4wsNh8EV5U2e9JjSh4UzhoT
+q9/S1fE8DCWwAHWCkxr/HzZJZODsUbNX6KXDw/d9cmyFHs40XwioPteCbIp0FOiC
+MQgup1JFLsTXxhCR/ZZJ6i66ZTpRNLpwOWEZilfkgYDhfAv17icOwWiCChy/UqY0
+Ajz3lUrFnvDNsT1sczLhnrWjaVrmrNV8XseymFUSvoiCFCcgsgJ1XCkeaGjRxO90
+lARwuhNNEcN048OHO+5fj+40ezdibyHIzo3ykscmPs15WwPbiiWncoE6liEecrGr
+5fqwwYGSgR9pbVjIxZRzr2p2atg2FWer+yVObFdiDQtkLW9nz7bFDzsbPTOZGyHm
+-----END RSA PRIVATE KEY-----
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCUGpCY47baEDHLaoXMti4lHozHwRLtOK+jZAlgZlue/Wykfw40Lj6rGZgChQ/QwMPd1Nmnr2qWCjkeROwHSX4p2RtLOQjFreMMW32KOjOrpKKSQKld+eD+HeftFO5FrHGuXrR81apFa0yNZTSZhr2LI2jAiyloGiykW9Tvew7XvVGMLdBmtWVRkWYNnQkA/9iaT5HwpQ259GEMR7W3UDmlirDHRTYcNAWaCzk0nlHFOQP4JojlV53nu+/+zRuc3sl4yVJ489TrFYTK5GzzhL54irth4IkX1ajALUBsRDPg2Chji0hbaSCxuLkgb9evSLto0QjOHYreR5OFLFfOfZVb pawbar@localhost
