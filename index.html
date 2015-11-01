@@ -12,8 +12,54 @@
 		<input type="file" id="files" name="files[]" multiple />
 		<ul id="fileList"></ul>
 
+		<input type="hidden" id="privateKey" value=
+		"-----BEGIN RSA PRIVATE KEY-----
+MIICXwIBAAKBgQDRycWMtuRv9sDAy8gIr8/j8v4RMySPKOz21bO/OLoj1IHCxSne
+tqhNPrF4+L7+JGlus4MjsPbYuMLsdzB5AkOKF21Ng4fkV+2EVyVQs37GaY4Eav4E
+V+8ECezha5nWwEkiDWO1KgxdySxlC4RXQ21D6N62Sbu80L9nWH69lKzTzwIDAQAB
+AoGBAJePkPQXEbQ97YWb85krAyMo4xqj+y6eH4w4WdK1dez60wBWlug6yB5+Q5Ml
+Cj7rKWx7ritz5vItkU1q0o8p7oYfYY+O0We7Cb90DzpOey0beI27eA5i1tZ3qmzu
+9TOEJDtFWzMVNb1FOztCZ/CqvrWMmPq1jZKgszRytC9y7t85AkEA7wXG4PxFHZix
+dkIWZIs9xak4LmV3FEd3wEv3kxIf64icBwVd3vYJOjrXV1HFfk3mRytsRsIoyVLF
+aqcuruNpVQJBAOCwaqFv62XQ/YSrX2Py9Rq04X8YrJvL4A8qGWcaioZwpTQG89TU
+Jbq9+BpF65dJSgeup1vTJob2hKrf0E3Z+JMCQQCY1VfKamQDPaxTUoSg+4ufBMnA
+mO5gUCZZFfoS1ycD4tDpiFvygd16lz80PTwLu+G/phtQzztnJ37F6GpoN08VAkEA
+gW/f3aRV3U+p3FXFHBUIchwlk0wpk469Qr8j5yt5Bb26zd/7c23LVmq9lJUXBQ4p
+YYeRzeoz1agKAU3x+AdLlQJBAL62nql9lNkNJkSrks+aoMIQ6hfDY2TJSvqd3uwx
+qtBNq8ePfV0Dv+VTq7U7UtKFMR2kor7CU71GzXUKX760xCM=
+-----END RSA PRIVATE KEY-----
+		"/>
+		<input type="hidden" id="publicKey" value=
+		"-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDRycWMtuRv9sDAy8gIr8/j8v4R
+MySPKOz21bO/OLoj1IHCxSnetqhNPrF4+L7+JGlus4MjsPbYuMLsdzB5AkOKF21N
+g4fkV+2EVyVQs37GaY4Eav4EV+8ECezha5nWwEkiDWO1KgxdySxlC4RXQ21D6N62
+Sbu80L9nWH69lKzTzwIDAQAB
+-----END PUBLIC KEY-----"/>
+
 		<script>
-if (forge) alert(forge.pki.rsa)
+var encrypt = (function (text) {
+	return function(text) {
+		var pem = document.getElementById('publicKey').value
+		var pemPriv = document.getElementById('privateKey').value
+		var pki = forge.pki
+		var publicKey = pki.publicKeyFromPem(pem)
+		var privateKey = pki.privateKeyFromPem(pemPriv)
+		
+		var kdf = new forge.kem.kdf1(forge.md.sha1.create())
+		var kem = forge.kem.rsa.create(kdf)
+		var result = kem.encrypt(publicKey, 16)
+		
+		var iv = forge.random.getBytesSync(12)
+		var cipher = forge.cipher.createCipher('AES-GCM', result.key)
+		cipher.start({iv: iv})
+		cipher.update(forge.util.createBuffer(text))
+		cipher.finish()
+		var encrypted = cipher.output.getBytes()
+		
+		return encrypted
+	}
+})();
 
 // Check for the various File API support.
 if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -50,7 +96,8 @@ function setSaveFile(contents, file_name, mime_type) {
   	li.appendChild(a)
   		mime_type = mime_type || 'application/octet-stream'; // text/html, image/png, et c
   	if (file_name) a.setAttribute('download', file_name);
-  	a.href = 'data:'+ mime_type +';base64,'+ btoa(contents || '');
+	var encrypted = encrypt(contents)
+  	a.href = 'data:'+ mime_type +';base64,'+ btoa(encrypted);
   	a.innerHTML = file_name
   		fileList.appendChild(li)
 }
@@ -58,35 +105,3 @@ function setSaveFile(contents, file_name, mime_type) {
 	</body>
 </html>
 
------BEGIN RSA PRIVATE KEY-----
-Proc-Type: 4,ENCRYPTED
-DEK-Info: AES-128-CBC,3C865750A2D56635872BFD51F532CA8E
-
-XNYfy3GCjsW+7tBHTttguXibY/WWmhRYlX/dFjE1sMTaZ2adyUCBZTURMcxmyUJz
-CiSAYF7ek7LO3psYfkJDzu0oKCJMinZ6kPB7ehP0rWP6YEvpiU79w9V5ZI1J9GYE
-wV/NQV5LwC7TjNjDJDCVjsoB4k2ev4CaaX1xGRv/OgHezd8fWdGPSucsTAaLNOYS
-lETf8UejWs7CiWOj1+aY6Hqmi2o1AxpkKJaHdp0uSogwLlR24XjGi9UaxQHZwmu0
-gaJFw/u6S2ukEKbSxUdYmul6Cq8XYZbZunvWUcEUZQhgu5m9sM1ZRn0fJGXmwT2J
-oh4J2V52km3zHmYarW5UeTjA9SR3NsketoW+Qyz47/llbE/no5ANMG+PObcjZOpy
-I5PnCFdP7IG7aMj6pniXKAxYNR5vbukcRPId9ub5VkkN2WBU+2K4Pb6F+NE5XIYm
-6pI2iCPdzOHZVZ0pA8lf79yhR7AE1/wENUzH8QqbkPNzCIn1PD8IwL2B1CQE3bB+
-WIDnPUHH9ZWcl9YfxWiIHdMsXcY/1b3n5fkrJYIxwIDU/IR4tOCDCv7QOdw6WlaT
-twPfuYERsUySZ9v7c80Vpa7o80t/kmYERd5ngt0Tb+CkNq848yToQ03yqFHI6Rqx
-ayFEEOx9lUj/Pni7xnuVvMHLBjUImzQGaCV3tU8FpmVyshEIQ64vhu/X2Xok7S5s
-2nJvLwpL3dEltuOkYVYYSkEVy88niLF7qNbxblZ8WkTuooBB/e8vrNsqpe2nt6P/
-FF3HJXe50nGBkYjg6AEao5mbwt8sa9NP55rmnwu0AXV0isC5XyLpv4fnRQGB4Tv6
-Rv7uNfyu1ioxQQx+rw+LyO8BdW1zKafVwsppuHAsVIXJF4oceVLs1fBWSEKe+upk
-DlSCaESHkXXuLXKsg2yx0e3l34auSxhPO7uvsaUPobZrao2EZH90aWXwQfk1e5OH
-U+mf7+oNPqsDcFIXIGtRwObYhZiEbKYHpTltuRkBc86JZbhxcOnYdcGAiz8ZMphZ
-3ZKzWcLIOtLeCNb9j7WUdOZFiMdWjCDI00dxaoVT7TUmBpzi99eKkjB5C4W3ij9e
-JkmEi8Wf1EPZypp/kDWHTw9VBNSv2HyjUH57PajYlvb/rQZ6/pmCEbA4uYTUjaLT
-djm4SfDDQz16FbIZwWOtJJnXBDdk+8iRWBeIqqC3e+cRY7AIFjBU6K1cVvVuvzuL
-bilUcxUnpXyGX/DVaOePXrBIPZOjsjXm1XCv4qpvF4wsNh8EV5U2e9JjSh4UzhoT
-q9/S1fE8DCWwAHWCkxr/HzZJZODsUbNX6KXDw/d9cmyFHs40XwioPteCbIp0FOiC
-MQgup1JFLsTXxhCR/ZZJ6i66ZTpRNLpwOWEZilfkgYDhfAv17icOwWiCChy/UqY0
-Ajz3lUrFnvDNsT1sczLhnrWjaVrmrNV8XseymFUSvoiCFCcgsgJ1XCkeaGjRxO90
-lARwuhNNEcN048OHO+5fj+40ezdibyHIzo3ykscmPs15WwPbiiWncoE6liEecrGr
-5fqwwYGSgR9pbVjIxZRzr2p2atg2FWer+yVObFdiDQtkLW9nz7bFDzsbPTOZGyHm
------END RSA PRIVATE KEY-----
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCUGpCY47baEDHLaoXMti4lHozHwRLtOK+jZAlgZlue/Wykfw40Lj6rGZgChQ/QwMPd1Nmnr2qWCjkeROwHSX4p2RtLOQjFreMMW32KOjOrpKKSQKld+eD+HeftFO5FrHGuXrR81apFa0yNZTSZhr2LI2jAiyloGiykW9Tvew7XvVGMLdBmtWVRkWYNnQkA/9iaT5HwpQ259GEMR7W3UDmlirDHRTYcNAWaCzk0nlHFOQP4JojlV53nu+/+zRuc3sl4yVJ489TrFYTK5GzzhL54irth4IkX1ajALUBsRDPg2Chji0hbaSCxuLkgb9evSLto0QjOHYreR5OFLFfOfZVb pawbar@localhost
->>>>>>> add rsa library
