@@ -5,7 +5,6 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>file encrypter</title>
-		<script src="forge.min.js"></script>
 	</head>
 	<body>
 
@@ -13,108 +12,14 @@
 		<ul id="fileList"></ul>
 		<input type="checkbox" id="decryption" value="true" />Decryption
 
-		<input type="hidden" id="serverPrivateKey" value=
-		"-----BEGIN RSA PRIVATE KEY-----
-MIICXwIBAAKBgQDRycWMtuRv9sDAy8gIr8/j8v4RMySPKOz21bO/OLoj1IHCxSne
-tqhNPrF4+L7+JGlus4MjsPbYuMLsdzB5AkOKF21Ng4fkV+2EVyVQs37GaY4Eav4E
-V+8ECezha5nWwEkiDWO1KgxdySxlC4RXQ21D6N62Sbu80L9nWH69lKzTzwIDAQAB
-AoGBAJePkPQXEbQ97YWb85krAyMo4xqj+y6eH4w4WdK1dez60wBWlug6yB5+Q5Ml
-Cj7rKWx7ritz5vItkU1q0o8p7oYfYY+O0We7Cb90DzpOey0beI27eA5i1tZ3qmzu
-9TOEJDtFWzMVNb1FOztCZ/CqvrWMmPq1jZKgszRytC9y7t85AkEA7wXG4PxFHZix
-dkIWZIs9xak4LmV3FEd3wEv3kxIf64icBwVd3vYJOjrXV1HFfk3mRytsRsIoyVLF
-aqcuruNpVQJBAOCwaqFv62XQ/YSrX2Py9Rq04X8YrJvL4A8qGWcaioZwpTQG89TU
-Jbq9+BpF65dJSgeup1vTJob2hKrf0E3Z+JMCQQCY1VfKamQDPaxTUoSg+4ufBMnA
-mO5gUCZZFfoS1ycD4tDpiFvygd16lz80PTwLu+G/phtQzztnJ37F6GpoN08VAkEA
-gW/f3aRV3U+p3FXFHBUIchwlk0wpk469Qr8j5yt5Bb26zd/7c23LVmq9lJUXBQ4p
-YYeRzeoz1agKAU3x+AdLlQJBAL62nql9lNkNJkSrks+aoMIQ6hfDY2TJSvqd3uwx
-qtBNq8ePfV0Dv+VTq7U7UtKFMR2kor7CU71GzXUKX760xCM=
------END RSA PRIVATE KEY-----"/>
-		<input type="hidden" id="serverPublicKey" value=
-		"-----BEGIN PUBLIC KEY-----
-MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDRycWMtuRv9sDAy8gIr8/j8v4R
-MySPKOz21bO/OLoj1IHCxSnetqhNPrF4+L7+JGlus4MjsPbYuMLsdzB5AkOKF21N
-g4fkV+2EVyVQs37GaY4Eav4EV+8ECezha5nWwEkiDWO1KgxdySxlC4RXQ21D6N62
-Sbu80L9nWH69lKzTzwIDAQAB
------END PUBLIC KEY-----"/>
-		<input type="hidden" id="clientPrivateKey" value=
-		"-----BEGIN RSA PRIVATE KEY-----
-MIICXwIBAAKBgQDRycWMtuRv9sDAy8gIr8/j8v4RMySPKOz21bO/OLoj1IHCxSne
-tqhNPrF4+L7+JGlus4MjsPbYuMLsdzB5AkOKF21Ng4fkV+2EVyVQs37GaY4Eav4E
-V+8ECezha5nWwEkiDWO1KgxdySxlC4RXQ21D6N62Sbu80L9nWH69lKzTzwIDAQAB
-AoGBAJePkPQXEbQ97YWb85krAyMo4xqj+y6eH4w4WdK1dez60wBWlug6yB5+Q5Ml
-Cj7rKWx7ritz5vItkU1q0o8p7oYfYY+O0We7Cb90DzpOey0beI27eA5i1tZ3qmzu
-9TOEJDtFWzMVNb1FOztCZ/CqvrWMmPq1jZKgszRytC9y7t85AkEA7wXG4PxFHZix
-dkIWZIs9xak4LmV3FEd3wEv3kxIf64icBwVd3vYJOjrXV1HFfk3mRytsRsIoyVLF
-aqcuruNpVQJBAOCwaqFv62XQ/YSrX2Py9Rq04X8YrJvL4A8qGWcaioZwpTQG89TU
-Jbq9+BpF65dJSgeup1vTJob2hKrf0E3Z+JMCQQCY1VfKamQDPaxTUoSg+4ufBMnA
-mO5gUCZZFfoS1ycD4tDpiFvygd16lz80PTwLu+G/phtQzztnJ37F6GpoN08VAkEA
-gW/f3aRV3U+p3FXFHBUIchwlk0wpk469Qr8j5yt5Bb26zd/7c23LVmq9lJUXBQ4p
-YYeRzeoz1agKAU3x+AdLlQJBAL62nql9lNkNJkSrks+aoMIQ6hfDY2TJSvqd3uwx
-qtBNq8ePfV0Dv+VTq7U7UtKFMR2kor7CU71GzXUKX760xCM=
------END RSA PRIVATE KEY-----"/>
-		<input type="hidden" id="clientPublicKey" value=
-		"-----BEGIN PUBLIC KEY-----
-MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDRycWMtuRv9sDAy8gIr8/j8v4R
-MySPKOz21bO/OLoj1IHCxSnetqhNPrF4+L7+JGlus4MjsPbYuMLsdzB5AkOKF21N
-g4fkV+2EVyVQs37GaY4Eav4EV+8ECezha5nWwEkiDWO1KgxdySxlC4RXQ21D6N62
-Sbu80L9nWH69lKzTzwIDAQAB
------END PUBLIC KEY-----"/>
-
 		<script>
-var encrypt = (function (text) {
-	var pki = forge.pki
-	var privateKey = pki.privateKeyFromPem(document.getElementById('serverPrivateKey').value)
+var encrypt = function (text) {
+	return 'a' + text
+}
 
-	var kdf = new forge.kem.kdf1(forge.md.sha1.create())
-	var kem = forge.kem.rsa.create(kdf)
-	var result = kem.encrypt(pki.publicKeyFromPem(document.getElementById('clientPublicKey').value), 16)
-
-	var cipher = forge.cipher.createCipher('AES-CBC', result.key)
-	var iv = forge.random.getBytesSync(12)
-	return function(text) {
-		var md = forge.md.sha1.create()
-		md.update(text, "utf8")
-		var signature = privateKey.sign(md)
-		se = signature
-
-		cipher.start({iv: iv})
-		cipher.update(forge.util.createBuffer(signature + text))
-		cipher.finish()
-		var encrypted = cipher.output.getBytes()
-
-		return iv + result.encapsulation + encrypted
-	}
-})()
-
-var decrypt = (function (text) {
-	var pki = forge.pki
-	var privateKey = pki.privateKeyFromPem(document.getElementById('clientPrivateKey').value)
-	var publicKey = pki.publicKeyFromPem(document.getElementById('serverPublicKey').value)
-
-	var kdf = new forge.kem.kdf1(forge.md.sha1.create())
-	var kem = forge.kem.rsa.create(kdf)
-	return function(text) {
-		var key = kem.decrypt(privateKey, text.substring(12,140), 16)
-		var decipher = forge.cipher.createDecipher("AES-CBC", key)
-		decipher.start({iv: text.substring(0,12)})
-		decipher.update(forge.util.createBuffer(text.substring(140)))
-		decipher.finish
-		var decrypted = decipher.output.getBytes()
-		var decryptedText = decrypted.substring(128)
-
-		var signature = decrypted.substring(0,128)
-
-		var md = forge.md.sha1.create()
-		for(var i = decryptedText.length; i>0; --i) {
-			var text = decryptedText.substring(0,i)
-			md.update(text, "utf8")
-			if (publicKey.verify(md.digest().bytes(), signature)) return text
-		}
-		alert("not verified!")
-
-		return decryptedText
-	}
-})()
+var decrypt = function (text) {
+	return text.substring(1)
+}
 
 // Check for the various File API support.
 if (window.File && window.FileReader && window.FileList && window.Blob) {
