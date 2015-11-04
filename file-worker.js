@@ -5,7 +5,7 @@ self.addEventListener("message", function(e) {
 		postMessage(
 			{
 				name: f.name,
-				content: reader.readAsDataURL(f)
+				content: reader.readAsText(f)
 			}
 		)
 	} catch(e) {
