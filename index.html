@@ -38,6 +38,7 @@ function handleFileSelect(evt) {
 	var worker = new Worker("file-worker.js")
 	worker.onmessage = function(e) {
 		var f = e.data
+		console.log(content)
 		setSaveFile(f.content, f.name)
 	}
     for (var i = 0, f; f = files[i]; i++) {

@@ -5,10 +5,10 @@ self.addEventListener("message", function(e) {
 		postMessage(
 			{
 				name: f.name,
-				content: reader.readAsText(f)
+				content: reader.readAsBinaryString(f)
 			}
 		)
 	} catch(e) {
-		console.log("error")
+		console.log("error: " + e)
 	}
 }, false)
